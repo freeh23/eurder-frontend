@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import { ItemOverviewComponent } from './item-overview/item-overview.component';
 import {FormsModule} from "@angular/forms";
 import {NameFilterPipe} from "./pipes/name-filter.pipe";
+import { CreateItemComponent } from './create-item/create-item.component';
 
 
 
@@ -14,7 +15,8 @@ import {NameFilterPipe} from "./pipes/name-filter.pipe";
         HeaderComponent,
         FooterComponent,
         ItemOverviewComponent,
-      NameFilterPipe
+      NameFilterPipe,
+      CreateItemComponent
     ],
   exports: [
     HeaderComponent,
