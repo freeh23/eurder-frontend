@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {filter, map, Observable} from "rxjs";
+import {Item} from "../model/Item";
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,7 @@ export class ItemService {
   getItems(): Observable<any> {
     return this.http.get(this.url);
   }
+
+
+
 }

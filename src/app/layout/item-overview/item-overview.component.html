@@ -1,19 +1,29 @@
 <main>
-<section>
-  <h3 class="section-title">Items</h3>
+  <section>
+    <form>
+      <input
+        #searchBox
+        class="form-control"
+        placeholder="Filter by name..."
+        [(ngModel)]="searchText">
+    </form>
+    <!--(input)="search(searchBox.value)"-->
+    <h3 class="section-title">Items</h3>
 
-  <ul class="card-list">
-    <li *ngFor="let item of items" class="card">
-      <div class="card-title">{{item.name}}</div>
-      <img class="card-image" src="../assets/images/item-image.png" alt="item image">
-      <div class="card-footer">
-        <div>Price: &euro; {{item.price}}</div>
-        <div class="stock">
-          <span>{{item.amountOfStock}}</span>
-          <img class="icon" src="../assets/images/warning-{{item.stockUrgency}}.png" alt="warning">
+
+<!-- -->
+    <ul class="card-list">
+      <li *ngFor="let item of items| nameFilter:searchText" class="card">
+        <div class="card-title">{{item.name}}</div>
+        <img class="card-image" src="../assets/images/item-image.png" alt="item image">
+        <div class="card-footer">
+          <div>Price: &euro; {{item.price}}</div>
+          <div class="stock">
+            <span>{{item.amountOfStock}}</span>
+            <img class="icon" src="../assets/images/warning-{{item.stockUrgency}}.png" alt="warning">
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
-</section>
+      </li>
+    </ul>
+  </section>
 </main>

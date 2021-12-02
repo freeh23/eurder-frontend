@@ -4,6 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import { ItemOverviewComponent } from './item-overview/item-overview.component';
+import {FormsModule} from "@angular/forms";
+import {NameFilterPipe} from "./pipes/name-filter.pipe";
 
 
 
@@ -11,15 +13,17 @@ import { ItemOverviewComponent } from './item-overview/item-overview.component';
     declarations: [
         HeaderComponent,
         FooterComponent,
-        ItemOverviewComponent
+        ItemOverviewComponent,
+      NameFilterPipe
     ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
-    imports: [
-        CommonModule,
-      RouterModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule
+  ]
 })
 export class LayoutModule { }
