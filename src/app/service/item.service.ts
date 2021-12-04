@@ -19,6 +19,11 @@ export class ItemService {
     return this.http.get(this.url);
   }
 
+  getItem(id: string): Observable<Item> {
+    const itemUrl = this.url + '/' + id;
+    return this.http.get<Item>(itemUrl);
+  }
+
 
 
 }

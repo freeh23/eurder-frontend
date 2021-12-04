@@ -1,12 +1,13 @@
 <main>
   <section>
-    <form>
+    <!--<form>
+
       <input
         #searchBox
         class="form-control"
         placeholder="Filter by name..."
         [(ngModel)]="searchText">
-    </form>
+    </form>-->
     <!--(input)="search(searchBox.value)"-->
     <h3 class="section-title">Items</h3>
 
@@ -14,6 +15,7 @@
 <!-- -->
     <ul class="card-list">
       <li *ngFor="let item of items| nameFilter:searchText" class="card">
+        <a routerLink="/items/{{item.id}}">
         <div class="card-title">{{item.name}}</div>
         <img class="card-image" src="../assets/images/item-image.png" alt="item image">
         <div class="card-footer">
@@ -23,7 +25,8 @@
             <img class="icon" src="../assets/images/warning-{{item.stockUrgency}}.png" alt="warning">
           </div>
         </div>
-      </li>
+        </a>
+        </li>
     </ul>
   </section>
 </main>

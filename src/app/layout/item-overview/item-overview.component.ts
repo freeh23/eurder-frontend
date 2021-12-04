@@ -21,10 +21,11 @@ export class ItemOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPets();
+    this.getItems();
   }
 
-  getPets() : void {
+  getItems() : void {
+    console.log("get all items is called.")
     this.itemService.getItems().subscribe(
       items => this.items = items);
   }
