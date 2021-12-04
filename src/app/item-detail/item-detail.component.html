@@ -20,9 +20,24 @@
         <button *ngIf="detailMode" class="btn" (click)="enableUpdateMode()">EDIT</button>
         <button *ngIf="detailMode" class="btn" (click)="goBack()">BACK</button>
         <button *ngIf="updateMode" class="btn" (click)="updateItem()">UPDATE</button>
-        <button *ngIf="updateMode" class="btn" (click)="cancelUpdate(item.id)">CANCEL</button>
+        <button *ngIf="updateMode" class="btn" (click)="cancelUpdate()">CANCEL</button>
+      </form>
+    </div>
 
+    <div *ngIf="!item">
+      <h3 class="section-title">Create Item:</h3>
+      <form>
+        <label class="form-label" for="name-create">Name</label>
+        <input class="form-control" id="name-create" name="name"  #itemName>
+        <label class="form-label" for="description-create">Description</label>
+        <input class="form-control" id="description-create" name="description" #itemDescription>
+        <label class="form-label" for="price-create">Price</label>
+        <input class="form-control" id="price-create" name="price" #itemPrice>
+        <label class="form-label" for="stock-create">Amount of stock</label>
+        <input class="form-control" id="stock-create" name="stock" #itemStock>
 
+        <button class="btn" (click)="createItem(itemName.value, itemDescription.value, itemPrice.value, itemStock.value)">CREATE</button>
+        <button class="btn" (click)="cancelNewItem()">CANCEL</button>
       </form>
     </div>
   </section>

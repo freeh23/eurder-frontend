@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {filter, map, Observable} from "rxjs";
 import {Item} from "../model/Item";
+import {CreateItem} from "../model/CreateItem";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class ItemService {
     const itemUrl = this.url + '/' + item.id;
     return this.http.put(itemUrl, item, this.httpOptions);
 
+  }
+
+  createItem(newItem: CreateItem): Observable<Item> {
+    return this.http.post<Item>(this.url, newItem, this.httpOptions);
   }
 }

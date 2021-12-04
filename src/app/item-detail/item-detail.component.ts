@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ItemService} from "../service/item.service";
 import {Item} from "../model/Item";
 import {Location} from "@angular/common";
+import {CreateItem} from "../model/CreateItem";
+
 
 @Component({
   selector: 'app-item-detail',
@@ -45,8 +47,7 @@ export class ItemDetailComponent implements OnInit {
     this.updateMode = true;
   }
 
-  cancelUpdate(id: string): void {
-    //this.router.navigate(['/items', id]);
+  cancelUpdate(): void {
     this.reloadComponent();
   }
 
@@ -63,5 +64,26 @@ export class ItemDetailComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
+  }
+
+  cancelNewItem() {
+    this.router.navigate(['/items']);
+  }
+
+  createItem(itemName: string, itemDescription: string, itemPrice: string, itemStock: string): void {
+    if (!itemName || !itemPrice || !itemStock) {
+      return;
+    }
+    const price = Number(itemPrice);
+    const stock = Number(itemStock);
+    const newItem: CreateItem = {
+      name: itemName,
+      description: itemDescription,
+      price: price,
+      amountOfStock: stock
+    }
+    this.itemService.createItem(newItem).subscribe(
+      (item) => this.router.navigate(['/items', item.id])
+    );
   }
 }
