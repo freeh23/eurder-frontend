@@ -13,6 +13,7 @@ export class ItemDetailComponent implements OnInit {
   detailMode: boolean = true;
   updateMode: boolean = false;
   item: Item | undefined;
+  id?: string | null;
 
   constructor(private activatedRoute: ActivatedRoute,
               private itemService: ItemService,
@@ -20,16 +21,17 @@ export class ItemDetailComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getItem();
   }
 
   getItem(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id != null) {
-      this.itemService.getItem(id).subscribe(
+
+    if (this.id != null) {
+      this.itemService.getItem(this.id).subscribe(
         item => this.item = item
       );
-      console.log(`item ${id} called`);
+      console.log(`item ${this.id} called`);
     }
   }
 
@@ -44,7 +46,22 @@ export class ItemDetailComponent implements OnInit {
   }
 
   cancelUpdate(id: string): void {
-    this.router.navigate(['/items', id]);
+    //this.router.navigate(['/items', id]);
+    this.reloadComponent();
   }
 
+  updateItem(): void {
+    if(this.item) {
+      this.itemService.updateItem(this.item).subscribe(
+        () => this.reloadComponent());
+      console.log("update method called")
+    }
+  }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
 }

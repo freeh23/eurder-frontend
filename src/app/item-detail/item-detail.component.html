@@ -6,20 +6,20 @@
       <form>
         <label class="form-label" for="name">Name</label>
         <input class="form-control" id="name" name="name"
-               [disabled]="detailMode" placeholder="{{item.name}}">
+               [disabled]="detailMode"  [(ngModel)]="item.name">
         <label class="form-label" for="description">Description</label>
         <input class="form-control" id="description" name="description"
-               [disabled]="detailMode" placeholder="{{item.description}}">
+               [disabled]="detailMode"  [(ngModel)]="item.description">
         <label class="form-label" for="price">Price</label>
         <input class="form-control" id="price" name="price"
-               [disabled]="detailMode" placeholder="{{item.price}}">
+               [disabled]="detailMode" [(ngModel)]="item.price">
         <label class="form-label" for="stock">Amount of stock</label>
         <input class="form-control" id="stock" name="stock"
-               [disabled]="detailMode" placeholder="{{item.amountOfStock}}">
+               [disabled]="detailMode" [(ngModel)]="item.amountOfStock">
 
         <button *ngIf="detailMode" class="btn" (click)="enableUpdateMode()">EDIT</button>
         <button *ngIf="detailMode" class="btn" (click)="goBack()">BACK</button>
-        <button *ngIf="updateMode" class="btn">UPDATE</button>
+        <button *ngIf="updateMode" class="btn" (click)="updateItem()">UPDATE</button>
         <button *ngIf="updateMode" class="btn" (click)="cancelUpdate(item.id)">CANCEL</button>
 
 

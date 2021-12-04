@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {LayoutModule} from "./layout/layout.module";
 import {HttpClientModule} from "@angular/common/http";
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
         BrowserModule,
         AppRoutingModule,
         LayoutModule,
-        HttpClientModule
+        HttpClientModule,
+      FormsModule
     ],
     providers: [],
     exports: [

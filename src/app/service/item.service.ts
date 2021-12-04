@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {filter, map, Observable} from "rxjs";
 import {Item} from "../model/Item";
 
@@ -10,6 +10,9 @@ import {Item} from "../model/Item";
 export class ItemService {
 
   private url: string;
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(private http: HttpClient) {
     this.url = `${environment.backendUrl}/items`;
@@ -25,5 +28,9 @@ export class ItemService {
   }
 
 
+  updateItem(item: Item): Observable<any> {
+    const itemUrl = this.url + '/' + item.id;
+    return this.http.put(itemUrl, item, this.httpOptions);
 
+  }
 }
