@@ -7,6 +7,8 @@ import { ItemOverviewComponent } from './item-overview/item-overview.component';
 import {FormsModule} from "@angular/forms";
 import {NameFilterPipe} from "./pipes/name-filter.pipe";
 import { CreateItemComponent } from './create-item/create-item.component';
+import { CustomerOverviewComponent } from './customer-overview/customer-overview.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 
 
@@ -16,7 +18,9 @@ import { CreateItemComponent } from './create-item/create-item.component';
         FooterComponent,
         ItemOverviewComponent,
       NameFilterPipe,
-      CreateItemComponent
+      CreateItemComponent,
+      CustomerOverviewComponent,
+      CustomerDetailComponent
     ],
   exports: [
     HeaderComponent,
